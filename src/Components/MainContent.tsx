@@ -1,38 +1,43 @@
-import { useEffect, useState } from "react"
-import apiClient from "../services/api-client"
+import { useEffect, useState } from "react";
+import apiClient from "../services/api-client";
 
-interface Props{
-    count: number
-    result:Game[]
+interface Props {
+	count: number;
+	result: Game[];
 }
 
-interface Game{
-    id: number
-    name: string
-    rating: number
+interface Game {
+	id: number;
+	name: string;
+	rating: number;
 }
 const MainContent = () => {
-    const [games, setgames]= useState<Game[]>([])
-    const [error , seterror] = useState('')
-    const [isLoading, setisLoading] = useState(false)
+	const [games, setgames] = useState<Game[]>([]);
+	const [error, seterror] = useState("");
+	const [isLoading, setisLoading] = useState(false);
 
-    useEffect(()=>{
-        setisLoading(true)
-        apiClient.get('/games')
-        .then((res)=> setgames(res.data.results))
-        .catch((err)=> seterror(err.message))
-        .finally(()=>setisLoading(false))
-    })
-  return (
-    <>{error && <p>{error}</p>}
-    {isLoading && <div className="spinner-border"></div>}
-    <ul>
-        {games.map((game)=>(
-            <li key={game.id}>{game.name}</li>
-        ))}
-    </ul>
-    </>
-  )
-}
+	useEffect(() => {
+		setisLoading(true);
+		apiClient
+			.get("/games")
+			.then((res) => setgames(res.data.results))
+			.catch((err) => seterror(err.message))
+			.finally(() => setisLoading(false));
+	});
+	return (
+		<>
+			{error && <p>{error}</p>}
+			{isLoading && <div className="spinner-border"></div>}
 
-export default MainContent
+			{games.map((games)=>(<div className="w-40 p-4 bg-white rounded-2xl shadow-md m-1" key={games.id}>
+				<p className="text-gray-600 mb-4">
+					{games.name}
+				</p>
+
+			</div>
+            ))}
+		</>
+	);
+};
+
+export default MainContent;

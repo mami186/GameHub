@@ -4,8 +4,9 @@ const App = () => {
   return (
     <div className="w-full">
       <Navbar />
-      
-      <MainContent></MainContent>
+      <div className=" flex flex-wrap">
+      <MainContent/>
+      </div>
     </div>
   )
 }
