@@ -23,7 +23,7 @@ const MainContent = () => {
 			.then((res) => setgames(res.data.results))
 			.catch((err) => seterror(err.message))
 			.finally(() => setisLoading(false));
-	});
+	},[]);
 	return (
 		<>
 			{error && <p>{error}</p>}
