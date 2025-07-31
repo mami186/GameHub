@@ -5,7 +5,7 @@ const Navbar = () => {
 	return (
 		<>
 			<nav>
-				<ul className="flex justify-between text-black mx-7 ">
+				<ul className="flex justify-between pt-4 text-black mx-7 ">
 					<li>
 						<FaHashnode className="text-5xl" />
 					</li>
