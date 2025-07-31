@@ -1,8 +1,11 @@
 
 const Rawg = () => {
-  return (<div>
-<p>Game data provided by <a href="https://rawg.io" target="_blank" rel="noopener noreferrer">RAWG</a></p>
-</div>
+  return (<footer>
+    <small>
+      Game data courtesy of <a href="https://rawg.io" target="_blank" className="text-blue-700" rel="noopener noreferrer">RAWG</a>
+    </small>
+  </footer>
+  
   )
 }
 
