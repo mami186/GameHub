@@ -2,10 +2,6 @@
     import apiClient from "../services/api-client";
     import MediaResize from "./MediaResize";
 
-    interface Props {
-        count: number;
-        result: Genre[];
-    }
     interface Genre {
         id: number;
         name: string;
@@ -33,20 +29,19 @@
 
         return (
             <>
-                <ul className=" shadow-md mr-3 h-auto pl-4 pr-9 rounded-2xl">
+                <ul className=" shadow-md mr-3 h-auto pb-1 pl-4 pr-9 rounded-2xl">
                     <h1 className="text-2xl text-left font-bold ">Genres</h1>
                     {error && <p>{error}</p>}
                     {isloading && <div>Loading...</div>}
                     <div>
-                        {genre.map((genre) => (
-                            <li className="flex items-center gap-2 my-2 pr-2">
+                        {genre.map((genreItem) => (
+                            <li key={genreItem.id} className="flex items-center gap-2 my-2 pr-2">
                                 <img
                                     className=" w-8 h-8 rounded-sm"
-                                    src={MediaResize(genre.image_background)}
+                                    src={MediaResize(genreItem.image_background)}
                                     alt="Image"
-                                    key={genre.id}
                                 />{" "}
-                                <p className='text-sm'>{genre.name}</p>
+                                <p className='text-sm'>{genreItem.name}</p>
                             </li>
                         ))}
                     </div>

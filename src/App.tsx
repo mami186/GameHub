@@ -4,12 +4,14 @@ import SIdebar from "./Components/SIdebar"
 import Rawg from "./Components/Rawg"
 const App = () => {
   return (<>
-    <div className="w-full">
+    <div className=" ">
       <Navbar />
-      <div className="flex my-3 px-1 h-auto">
-      <SIdebar/>
+      <div className="flex flex-auto">
+      <div className=" hidden sm:hidden md:block lg:block w-43">
+        <SIdebar />
+      </div>
 
-      <div className=" flex flex-wrap">
+      <div className="">
         <MainContent />
       </div>
       </div>
