@@ -14,7 +14,7 @@ const App = () => {
 				<Navbar />
 				<div className="flex flex-auto">
 					<div className=" hidden sm:hidden md:block lg:block w-43">
-						<SIdebar onselectedGenre={(genra) => setSelectedGenre(genra)} />
+						<SIdebar selectedGenre={selectedGenre} onselectedGenre={(genra) => setSelectedGenre(genra)} />
 					</div>
 
 					<div className="">
