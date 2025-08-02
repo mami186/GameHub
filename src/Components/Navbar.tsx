@@ -1,9 +1,26 @@
 import { useState } from "react";
 import { FaHashnode, FaMoon, FaSun } from "react-icons/fa6";
 import { IoSearchSharp, IoMenu } from "react-icons/io5";
+import { FiMoon, FiSun } from "react-icons/fi";
+
 
 const Navbar = () => {
-	const [ theme, toggleTheme ] = useState();
+	const [darkMode, setDarkMode] = useState(false)
+
+		const toggleTheme = () => {
+		  const html = document.documentElement
+		  if (html.classList.contains("dark")) {
+			html.classList.remove("dark")
+			localStorage.setItem("theme", "light")
+		  } else {
+			html.classList.add("dark")
+			localStorage.setItem("theme", "dark")
+		  }
+		}
+	  
+
+
+
 	return (
 		<>
 			<nav className="pt-4">
@@ -25,20 +42,7 @@ const Navbar = () => {
 						</div>
 					</li>
 
-
-                    <li className={`mt-3 mr-2 text-2xl sm:block  md:block ${theme === 'dark' ? "hidden" : "block"}`} >
-					<FaSun />
-					</li>
-					<li className={`mt-3 mr-2 text-2xl sm:block  md:block ${theme === 'dark' ? "block" : "hidden"}`}>
-					<FaMoon /> 
-					</li>
-					<li className="mr-2">
-						<label className=" relative cursor-pointer">
-							<input type="checkbox" className="sr-only peer "  />
-                            <div className="w-11 h-6 mt-3 bg-gray-300 peer-checked:bg-gray-900 rounded-full transition-all duration-300"></div>
-                            <div className="absolute  mt-3 left-1 top-1 w-4 h-4 bg-gray-900 rounded-full transition-all duration-300 peer-checked:translate-x-5 peer-checked:bg-gray-300"></div>
-						</label>
-					</li>
+					
 				</ul>
 			</nav>
 		</>

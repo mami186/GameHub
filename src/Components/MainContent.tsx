@@ -1,27 +1,12 @@
 import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
 import MediaResize from "./MediaResize";
+import useGames from "../hooks/useGames";
 
-interface Game {
-	id: number;
-	name: string;
-	rating: number;
-	background_image: string;
-}
+
 
 const MainContent = () => {
-	const [games, setgames] = useState<Game[]>([]);
-	const [error, seterror] = useState("");
-	const [isLoading, setisLoading] = useState(false);
-
-	useEffect(() => {
-		setisLoading(true);
-		apiClient
-			.get("/games")
-			.then((res) => setgames(res.data.results))
-			.catch((err) => seterror(err.message))
-			.finally(() => setisLoading(false));
-	}, []);
+	const {games ,error , isLoading}=useGames() 	 	
 
 	return (
 		<>
