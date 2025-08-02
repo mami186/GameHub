@@ -1,15 +1,19 @@
 import MediaResize from "./MediaResize";
 import useGames from "../hooks/useGames";
 import PlatformIcons from "./PlatformIcons";
+import LoadingSkeleton from "./LoadingSkeleton";
 
 const MainContent = () => {
 	const { games, error, isLoading } = useGames();
+	const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 	return (
 		<>
 			{error && <p>{error}</p>}
-			{isLoading && <div className="spinner-border"></div>}
 			<div className="flex flex-wrap ">
+			{isLoading && skeletons.map((skeleton) => <div key={skeleton}><LoadingSkeleton/></div>)}
+
+		
 				{games.map((game) => (
 					<div
 						className="flex flex-col flex-auto sm:w-64 bg-white rounded-lg overflow-hidden shadow-2xl m-1 mb-2"
