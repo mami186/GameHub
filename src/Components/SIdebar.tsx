@@ -1,6 +1,4 @@
-    import { useEffect, useState } from "react";
-    import apiClient from "../services/api-client";
-    import MediaResize from "./MediaResize";
+import MediaResize from "./MediaResize";
 import useGenre from "../hooks/useGenre";
 
     const SIdebar = () => {

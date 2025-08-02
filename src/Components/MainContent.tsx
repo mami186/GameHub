@@ -1,12 +1,9 @@
-import { useEffect, useState } from "react";
-import apiClient from "../services/api-client";
 import MediaResize from "./MediaResize";
 import useGames from "../hooks/useGames";
-
-
+import PlatformIcons from "./PlatformIcons";
 
 const MainContent = () => {
-	const {games ,error , isLoading}=useGames() 	 	
+	const { games, error, isLoading } = useGames();
 
 	return (
 		<>
@@ -19,10 +16,17 @@ const MainContent = () => {
 						key={game.id}
 					>
 						<img src={MediaResize(game.background_image)} alt="Image" />
-						<div className="flex items-center justify-between px-3 py-2 h-auto">
-							<div>{game.name}</div>
-							<div className="bg-gray-500 opacity-70 rounded p-0 text-white text-center">
-								{game.rating}
+						<div className="flex flex-col">
+							<div className="flex items-center justify-between px-3 py-2 h-auto">
+								<div>{game.name}</div>
+								<div className="bg-gray-500 opacity-70 rounded p-0 text-white text-center">
+									{game.rating}
+								</div>
+							</div>
+							<div className="px-3 pb-2">
+								<PlatformIcons
+									platforms={game.parent_platforms.map((p) => p.platform)}
+								/>
 							</div>
 						</div>
 					</div>
