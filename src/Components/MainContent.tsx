@@ -2,19 +2,30 @@ import MediaResize from "./MediaResize";
 import useGames from "../hooks/useGames";
 import PlatformIcons from "./PlatformIcons";
 import LoadingSkeleton from "./LoadingSkeleton";
+import type { Genre } from "../hooks/useGenre";
 
-const MainContent = () => {
-	const { games, error, isLoading } = useGames();
+
+interface Props{
+	selectedGenre: Genre | null
+}
+
+
+const MainContent = ({selectedGenre}:Props) => {
+	const { games, error, isLoading } = useGames(selectedGenre);
 	const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+
+
 
 	return (
 		<>
 			{error && <p>{error}</p>}
 			<div className="flex flex-wrap ">
-			{isLoading && skeletons.map((skeleton) => <div key={skeleton}><LoadingSkeleton/></div>)}
-
-		
-				{games.map((game) => (
+				{isLoading && skeletons.map((skeleton) => (
+					<LoadingSkeleton key={skeleton} />
+				))}
+				
+				{!isLoading && games.map((game) => (
 					<div
 						className="flex flex-col flex-auto sm:w-64 bg-white rounded-lg overflow-hidden shadow-2xl m-1 mb-2"
 						key={game.id}

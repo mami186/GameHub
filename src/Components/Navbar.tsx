@@ -17,9 +17,6 @@ const Navbar = () => {
 			localStorage.setItem("theme", "dark")
 		  }
 		}
-	  
-
-
 
 	return (
 		<>
