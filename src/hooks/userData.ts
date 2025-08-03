@@ -3,7 +3,6 @@ import apiClient from "../services/api-client";
 import {
 	CanceledError,
 	type AxiosRequestConfig,
-	type AxiosResponse,
 } from "axios";
 
 interface FetchResponse<T> {

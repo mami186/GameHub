@@ -1,5 +1,5 @@
 import MediaResize from "./MediaResize";
-import useGames from "../hooks/useGames";
+import useGames, { type Platform } from "../hooks/useGames";
 import PlatformIcons from "./PlatformIcons";
 import LoadingSkeleton from "./LoadingSkeleton";
 import type { Genre } from "../hooks/useGenre";
@@ -7,11 +7,12 @@ import type { Genre } from "../hooks/useGenre";
 
 interface Props{
 	selectedGenre: Genre | null
+	selectedPlatform: Platform | null
 }
 
 
-const MainContent = ({selectedGenre}:Props) => {
-	const { data, error, isLoading } = useGames(selectedGenre);
+const MainContent = ({selectedGenre,selectedPlatform}:Props) => {
+	const { data, error, isLoading } = useGames(selectedGenre,selectedPlatform);
 	const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 
@@ -24,7 +25,6 @@ const MainContent = ({selectedGenre}:Props) => {
 				{isLoading && skeletons.map((skeleton) => (
 					<LoadingSkeleton key={skeleton} />
 				))}
-				
 				{!isLoading && data.map((game) => (
 					<div
 						className="flex flex-col flex-auto sm:w-64 bg-white rounded-lg overflow-hidden shadow-2xl m-1 mb-2"
