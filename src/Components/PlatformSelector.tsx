@@ -11,16 +11,16 @@ const PlatformSelector = ({ onSelectPlatform }: Props) => {
 	if (error) return null;
 
 	return (
-<select
+<select className="p-2 border mx-2 rounded-2xl text-sm bg-white px-2 "
   onChange={(e) => {
     const selectedSlug = e.target.value;
     const selectedPlatform = data.find((p) => p.slug === selectedSlug);
     if (selectedPlatform) onSelectPlatform(selectedPlatform);
   }}
 >
-  <option value="" hidden>Platform</option>
+  <option hidden>Platform</option>
   {data.map((platform) => (
-    <option key={platform.id} value={platform.slug}>
+    <option  key={platform.id} value={platform.slug}>
       {platform.name}
     </option>
   ))}

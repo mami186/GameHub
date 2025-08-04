@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "daisyui";
 
 :root {
 	font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -11,5 +12,39 @@
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	transition: all 0.3s ease-in-out;
 }
 
+.dark {
+	color: rgb(179, 179, 179);
+	background-color: #151515;
+	border-color: rgb(179, 179, 179);
+	transition: all 0.3s ease-in-out;
+}
+
+/* Add transitions to base elements */
+body,
+svg,
+.bg-white,
+.bg-gray-500,
+.shadow-2xl {
+	transition: all 0.3s ease !important;
+}
+
+/* Dark mode icon colors */
+.dark svg,
+.dark .text-black {
+	color: white !important;
+}
+
+.dark .bg-white {
+	background-color: #4a4a4d !important;
+	color: white !important;
+}
+.dark .bg-gray-500 {
+	background-color: #4a4a4d !important;
+	color: white !important;
+}
+.dark .shadow-2xl {
+	box-shadow: 0 25px 50px -12px rgba(223, 223, 223, 0.1) !important;
+}

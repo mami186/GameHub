@@ -27,7 +27,7 @@ const SIdebar = ({ onselectedGenre ,selectedGenre }: Props) => {
 							/>{" "}
 							<button
 								onClick={() => onselectedGenre(genra)}
-								className={`text-sm hover:underline hover:text-purple-800 ${genra.id ===selectedGenre?.id ? ' font-bold underline':'font-normal'}`}
+								className={`text-sm hover:underline text-left hover:text-purple-800 ${genra.id ===selectedGenre?.id ? ' font-bold underline':'font-normal'}`}
 							>
 								{genra.name}
 							</button>
