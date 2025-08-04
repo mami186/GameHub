@@ -1,10 +1,16 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { FaHashnode, FaMoon, FaSun } from "react-icons/fa6";
 import { IoSearchSharp, IoMenu } from "react-icons/io5";
 import { FiMoon, FiSun } from "react-icons/fi";
 
+interface Props{
+	onsubmit :(search:string)=>void
+}
 
-const Navbar = () => {
+const Navbar = ({onsubmit}:Props) => {
+
+	const ref =useRef<HTMLInputElement>(null)
+
 	const [darkMode, setDarkMode] = useState(false)
 
 		const toggleTheme = () => {
@@ -32,10 +38,15 @@ const Navbar = () => {
 						{" "}
 						<div className="relative w-full flex items-center">
 							<IoSearchSharp className="absolute left-3" />
-							<input
-								type="text"
-								className=" w-full border  rounded-xl hover:bg-gray-300"
-							/>
+							<form onSubmit={(event)=>{
+								event.preventDefault()
+								if(ref.current) onsubmit(ref.current?.value)}
+							}>
+								<input ref={ref}
+									type="text"
+									className=" w-full border  rounded-xl hover:bg-gray-300"
+								/>
+							</form>
 						</div>
 					</li>
 

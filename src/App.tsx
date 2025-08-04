@@ -7,32 +7,35 @@ import { useState } from "react";
 import type { Genre } from "./hooks/useGenre";
 import type { Platform } from "./hooks/useGames";
 
+
+export interface GameQuery {
+	genre: Genre | null;
+	platform: Platform | null;
+	searchText : string 
+}
 const App = () => {
-	const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
-	const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
-		null
-	);
+	const [gameQuery , setgameQuery]=useState<GameQuery>({}as GameQuery)
+		
 	return (
 		<>
 			<div className=" ">
-				<Navbar />
+				<Navbar onsubmit={(searchText)=>setgameQuery({...gameQuery , searchText})} />
 				<div className="flex flex-auto">
 					<div className=" hidden sm:hidden md:block lg:block w-43">
 						<SIdebar
-							selectedGenre={selectedGenre}
-							onselectedGenre={(genra) => setSelectedGenre(genra)}
+							selectedGenre={gameQuery.genre}
+							onselectedGenre={(genre) => setgameQuery({...gameQuery , genre})}
 						/>
 						<PlatformSelector
 							onSelectPlatform={(platform: Platform) =>
-								setSelectedPlatform(platform)
+								setgameQuery({...gameQuery , platform})
 							}
 						/>
 					</div>
 
 					<div className="">
 						<MainContent
-							selectedPlatform={selectedPlatform}
-							selectedGenre={selectedGenre}
+							gameQuery={gameQuery}
 						/>{" "}
 					</div>
 				</div>

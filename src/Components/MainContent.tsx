@@ -3,16 +3,16 @@ import useGames, { type Platform } from "../hooks/useGames";
 import PlatformIcons from "./PlatformIcons";
 import LoadingSkeleton from "./LoadingSkeleton";
 import type { Genre } from "../hooks/useGenre";
+import type { GameQuery } from "../App";
 
 
 interface Props{
-	selectedGenre: Genre | null
-	selectedPlatform: Platform | null
+	gameQuery : GameQuery
 }
 
 
-const MainContent = ({selectedGenre,selectedPlatform}:Props) => {
-	const { data, error, isLoading } = useGames(selectedGenre,selectedPlatform);
+const MainContent = ({gameQuery}:Props) => {
+	const { data, error, isLoading } = useGames(gameQuery);
 	const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 
@@ -39,9 +39,9 @@ const MainContent = ({selectedGenre,selectedPlatform}:Props) => {
 								</div>
 							</div>
 							<div className="px-3 pb-2">
-								<PlatformIcons
+								{/* <PlatformIcons
 									platforms={game.parent_platforms.map((p) => p.platform)}
-								/>
+								/> */}
 							</div>
 						</div>
 					</div>
