@@ -24,7 +24,7 @@ const MainContent = ({gameQuery}:Props) => {
 				{isLoading && skeletons.map((skeleton) => (
 					<LoadingSkeleton key={skeleton} />
 				))}
-				{!isLoading && data.map((game) => (
+				{!isLoading && data?.map((game) => (
 					<div
 						className={'flex flex-col flex-auto  sm:w-72 sm:max-w-96  rounded-lg overflow-hidden shadow-2xl  m-1 mb-2 '}
 						key={game.id}
