@@ -67,7 +67,7 @@ const App = () => {
 					<div className="flex-1">
 						<div className="flex flex-col">
 							<GameHeading gmaeQuery={gameQuery} />
-							<PlatformSelector
+							<PlatformSelector 
 								onSelectPlatform={(platform: Platform) =>
 									setgameQuery({ ...gameQuery, platform })
 								}
