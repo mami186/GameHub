@@ -1,4 +1,4 @@
-import type { Platform } from "../hooks/useGames";
+import type { Platform } from "../hooks/usePlatfom";
 import usePlatform from "../hooks/usePlatfom";
 
 interface Props {

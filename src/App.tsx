@@ -1,18 +1,18 @@
-import Navbar from "./Components/Navbar";
-import MainContent from "./Components/MainContent";
-import SIdebar from "./Components/SIdebar";
-import PlatformSelector from "./Components/PlatformSelector";
 import { useState } from "react";
-import type { Genre } from "./hooks/useGenre";
-import type { Platform } from "./hooks/useGames";
 import GameHeading from "./Components/GameHeading";
+import MainContent from "./Components/MainContent";
+import Navbar from "./Components/Navbar";
+import PlatformSelector from "./Components/PlatformSelector";
+import SIdebar from "./Components/SIdebar";
+import type { Genre } from "./hooks/useGenre";
+import type { Platform } from "./hooks/usePlatfom";
 
 export interface GameQuery {
 	genre: Genre | null;
 	platform: Platform | null;
 	searchText: string;
 }
-const App = () => {
+const App = () => { 
 	const [gameQuery, setgameQuery] = useState<GameQuery>({} as GameQuery);
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 

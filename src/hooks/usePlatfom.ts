@@ -1,19 +1,22 @@
 import { useQuery } from "@tanstack/react-query";
-import {type FetchResponse } from "../services/api-client";
-import { type Platform } from "./useGames";
-import apiClient from "../services/api-client";
+import ApiClient from "../services/api-client";
+
+const apiClient =new ApiClient<Platform>("/platforms/lists/parents")
+export interface Platform {
+	id: number;
+	name: string;
+	slug: string;
+}
 
 const usePlatform = () => {
 	const query = useQuery({
 		queryKey: ["platforms"],
-		queryFn: () => 
-			apiClient.get<FetchResponse<Platform>>("/platforms/lists/parents")
-				.then(res => res.data.results),
+		queryFn: () => apiClient.getAll(),
 		staleTime: 24 * 60 * 60 * 1000, // 24 hours
 	});
 
 	return {
-		data: query.data || [],
+		data: query.data?.results || [],
 		error: query.error?.message || "",
 		isLoading: query.isLoading,
 	};

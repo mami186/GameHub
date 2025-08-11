@@ -13,12 +13,12 @@ const SIdebar = ({ onselectedGenre ,selectedGenre }: Props) => {
 		<>
 			<ul className=" shadow-md mr-3 h-auto pb-1 pl-4 pr-9 rounded-2xl">
 				<h1 className="text-2xl text-left font-bold ">Genres</h1>
-				{error && <p>{error.message}</p>}
+				{error && <p>{error}</p>}
 				{isLoading && (
 					<div className="w-6 h-6 border-4 border-gray-300 border-t-gray-700 rounded-full animate-spin"></div>
 				)}
 				<div>
-					{data?.results.map((genra) => (
+					{data?.map((genra) => (
 						<li key={genra.id} className="flex items-center gap-2 my-2 pr-2">
 							<img
 								className=" w-8 h-8 rounded-sm"
