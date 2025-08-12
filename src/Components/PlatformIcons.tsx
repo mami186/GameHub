@@ -1,5 +1,4 @@
 import type { IconType } from "react-icons";
-import type { Platform } from "../hooks/useGames";
 import {
 	FaPlaystation,
 	FaXbox,
@@ -10,6 +9,7 @@ import {
 	FaGlobe,
 } from "react-icons/fa";
 import{BsNintendoSwitch} from "react-icons/bs";
+import type { Platform } from "../hooks/usePlatfom";
 interface Props {
 	platforms: Platform[];
 }
@@ -31,7 +31,7 @@ const PlatformIcons = ({ platforms }: Props) => {
 	return (
 		<div className="flex gap-1">
 			{platforms.map((platform) => {
-				const IconComponent = iconMap[platform.slug]
+				const IconComponent = iconMap[platform.slug] || FaGlobe
 				return (
 					<IconComponent
 						key={platform.id }
