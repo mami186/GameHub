@@ -4,12 +4,11 @@ import MainContent from "./Components/MainContent";
 import Navbar from "./Components/Navbar";
 import PlatformSelector from "./Components/PlatformSelector";
 import SIdebar from "./Components/SIdebar";
-import type { Genre } from "./hooks/useGenre";
 import type { Platform } from "./hooks/usePlatfom";
 
 export interface GameQuery {
-	genre: Genre | null;
-	platform: Platform | null;
+	genreId?: number ;
+	platformId?: number;
 	searchText: string;
 }
 const App = () => { 
@@ -46,9 +45,9 @@ const App = () => {
 							×
 						</button>
 						<SIdebar
-							selectedGenre={gameQuery.genre}
+							selectedGenreId={gameQuery.genreId}
 							onselectedGenre={(genre) => {
-								setgameQuery({ ...gameQuery, genre });
+								setgameQuery({ ...gameQuery, genreId: genre.id });
 								setIsMobileMenuOpen(false);
 							}}
 						/>
@@ -59,8 +58,8 @@ const App = () => {
 					{/* Desktop Sidebar */}
 					<div className="hidden md:block lg:block w-43">
 						<SIdebar
-							selectedGenre={gameQuery.genre}
-							onselectedGenre={(genre) => setgameQuery({ ...gameQuery, genre })}
+							selectedGenreId={gameQuery.genreId}
+							onselectedGenre={(genre) => setgameQuery({ ...gameQuery, genreId: genre.id })}
 						/>
 					</div>
 
@@ -69,7 +68,7 @@ const App = () => {
 							<GameHeading gmaeQuery={gameQuery} />
 							<PlatformSelector 
 								onSelectPlatform={(platform: Platform) =>
-									setgameQuery({ ...gameQuery, platform })
+									setgameQuery({ ...gameQuery, platformId: platform.id })
 								}
 							/>
 						</div>

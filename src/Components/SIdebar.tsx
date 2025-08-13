@@ -3,10 +3,10 @@ import useGenre, { type Genre } from "../hooks/useGenre";
 
 interface Props {
 	onselectedGenre: (selectGenre: Genre) => void;
-    selectedGenre: Genre | null
+    selectedGenreId?: number 
 }
 
-const SIdebar = ({ onselectedGenre ,selectedGenre }: Props) => {
+const SIdebar = ({ onselectedGenre ,selectedGenreId }: Props) => {
 	const { data, error, isLoading } = useGenre();
 
 	return (
@@ -27,7 +27,7 @@ const SIdebar = ({ onselectedGenre ,selectedGenre }: Props) => {
 							/>{" "}
 							<button
 								onClick={() => onselectedGenre(genra)}
-								className={`text-sm hover:underline text-left hover:text-purple-800 ${genra.id ===selectedGenre?.id ? ' font-bold underline':'font-normal'}`}
+								className={`text-sm hover:underline text-left hover:text-purple-800 ${genra.id ===selectedGenreId? ' font-bold underline':'font-normal'}`}
 							>
 								{genra.name}
 							</button>
