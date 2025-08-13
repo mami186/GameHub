@@ -1,24 +1,25 @@
 import { useQuery } from "@tanstack/react-query";
 import ApiClient from "../services/api-client";
+import * as ms from "ms";
 
-const apiClient = new ApiClient<Genre>("/genres")
+const apiClient = new ApiClient<Genre>("/genres");
 export interface Genre {
 	id: number;
 	name: string;
 	image_background: string;
 }
 
-const useGenre = () =>{
-	const query=useQuery({
+const useGenre = () => {
+	const query = useQuery({
 		queryKey: ["genres"],
 		queryFn: () => apiClient.getAll(),
-		staleTime: 24 * 60 * 60 * 1000, // 24 hours
+		staleTime: ms("1 day"), // 24 hours
 	});
 	return {
 		data: query.data?.results || [],
 		error: query.error?.message || "",
 		isLoading: query.isLoading,
 	};
-}
+};
 
 export default useGenre;
