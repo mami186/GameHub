@@ -1,14 +1,13 @@
 import MediaResize from "./MediaResize";
-import useGenre, { type Genre } from "../hooks/useGenre";
+import useGenre from "../hooks/useGenre";
+import useStore from "../store";
 
-interface Props {
-	onselectedGenre: (selectGenre: Genre) => void;
-    selectedGenreId?: number 
-}
 
-const SIdebar = ({ onselectedGenre ,selectedGenreId }: Props) => {
+const SIdebar = ( ) => {
 	const { data, error, isLoading } = useGenre();
 
+	const genreId =useStore(s=>s.gameQuery.genreId)
+	const setGenreId =useStore(s=>s.setGenreId)
 	return (
 		<>
 			<ul className=" shadow-md mr-3 h-auto pb-1 pl-4 pr-9 rounded-2xl">
@@ -26,8 +25,8 @@ const SIdebar = ({ onselectedGenre ,selectedGenreId }: Props) => {
 								alt="Image"
 							/>{" "}
 							<button
-								onClick={() => onselectedGenre(genra)}
-								className={`text-sm hover:underline text-left hover:text-purple-800 ${genra.id ===selectedGenreId? ' font-bold underline':'font-normal'}`}
+								onClick={() => setGenreId}
+								className={`text-sm hover:underline text-left hover:text-purple-800 ${genra.id === genreId? ' font-bold underline':'font-normal'}`}
 							>
 								{genra.name}
 							</button>

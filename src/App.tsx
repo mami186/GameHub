@@ -4,23 +4,14 @@ import MainContent from "./Components/MainContent";
 import Navbar from "./Components/Navbar";
 import PlatformSelector from "./Components/PlatformSelector";
 import SIdebar from "./Components/SIdebar";
-import type { Platform } from "./hooks/usePlatfom";
 
-export interface GameQuery {
-	genreId?: number ;
-	platformId?: number;
-	searchText: string;
-}
+
 const App = () => { 
-	const [gameQuery, setgameQuery] = useState<GameQuery>({} as GameQuery);
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
 	return (
 		<>
 			<div className="relative">
 				<Navbar
-					onsubmit={(searchText) => setgameQuery({ ...gameQuery, searchText })}
-					onMenuToggle={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
 				/>
 
 				{/* Mobile Sidebar Overlay */}
@@ -44,36 +35,23 @@ const App = () => {
 						>
 							×
 						</button>
-						<SIdebar
-							selectedGenreId={gameQuery.genreId}
-							onselectedGenre={(genre) => {
-								setgameQuery({ ...gameQuery, genreId: genre.id });
-								setIsMobileMenuOpen(false);
-							}}
-						/>
+						<SIdebar/>
 					</div>
 				</div>
 
 				<div className="flex flex-auto">
 					{/* Desktop Sidebar */}
 					<div className="hidden md:block lg:block w-43">
-						<SIdebar
-							selectedGenreId={gameQuery.genreId}
-							onselectedGenre={(genre) => setgameQuery({ ...gameQuery, genreId: genre.id })}
-						/>
+						<SIdebar/>
 					</div>
 
 					<div className="flex-1">
 						<div className="flex flex-col">
-							<GameHeading gmaeQuery={gameQuery} />
-							<PlatformSelector 
-								onSelectPlatform={(platform: Platform) =>
-									setgameQuery({ ...gameQuery, platformId: platform.id })
-								}
-							/>
+							<GameHeading/>
+							<PlatformSelector/>
 						</div>
 						<div className="">
-							<MainContent gameQuery={gameQuery} />
+							<MainContent />
 						</div>
 					</div>
 				</div>

@@ -1,12 +1,12 @@
 import type { Platform } from "../hooks/usePlatfom";
 import usePlatform from "../hooks/usePlatfom";
-import usePlatforms from "../hooks/usePlatforms";
+import useStore from "../store";
 
-interface Props {
-	onSelectPlatform: (platform: Platform) => void;
-}
 
-const PlatformSelector = ({ onSelectPlatform }: Props) => {
+
+const PlatformSelector = () => {
+	const platformId= useStore(s=>s.gameQuery.platformId);
+	const setPlatformId = useStore(s=>s.setPlatformId);
 	const { data, error } = usePlatform();
 	return (
 		<>
@@ -14,12 +14,9 @@ const PlatformSelector = ({ onSelectPlatform }: Props) => {
 			{error && <p>{error}</p>}
 			<select
 				className="p-2 border mx-2 rounded-2xl text-sm bg-white px-2 "
-				onChange={(e) => {
-					const selectedSlug = parseInt(e.target.value);
-					const selectedPlatform = usePlatforms(selectedSlug);
-					if (selectedPlatform) onSelectPlatform(selectedPlatform);
-				}}
-			>
+				value={platformId}
+				onChange={(e)=>setPlatformId(parseInt(e.target.value))}
+			>	
 				<option>Platform</option>
 				{data?.map((platform: Platform) => (
 					<option key={platform.id} value={platform.id}>

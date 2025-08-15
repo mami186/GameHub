@@ -1,18 +1,16 @@
 import MediaResize from "./MediaResize";
 import useGames from "../hooks/useGames";
 import LoadingSkeleton from "./LoadingSkeleton";
-import type { GameQuery } from "../App";
 import PlatformIcons from "./PlatformIcons";
 import * as React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-interface Props {
-	gameQuery: GameQuery;
-}
 
-const MainContent = ({ gameQuery }: Props) => {
+
+const MainContent = () => {
 	const { data, error, isLoading, fetchNextPage ,hasNextPage} =
-		useGames(gameQuery);
+		useGames();
+		
 	const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 	const gameCount = data.pages.reduce(
 		(total, page) => total + page.results.length,

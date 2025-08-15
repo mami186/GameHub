@@ -1,17 +1,17 @@
-import type { GameQuery } from "../App"
 import useGenres from "../hooks/useGeneres"
-import useGenre from "../hooks/useGenre"
 import usePlatforms from "../hooks/usePlatforms"
-
-interface Props{
-    gmaeQuery :GameQuery
-}
+import useStore from "../store"
 
 
-const GameHeading = ({gmaeQuery}:Props) => {
-  const genre = useGenres(gmaeQuery.genreId)
 
-  const platform = usePlatforms(gmaeQuery.platformId)
+
+const GameHeading = () => {
+  const genreId=useStore(s=>s.gameQuery.genreId)
+  const platformId=useStore(s=>s.gameQuery.platformId)
+
+  const genre = useGenres(genreId)
+
+  const platform = usePlatforms(platformId)
   
     const heading = `${platform?.name|| ''} ${genre?.name || ''} Games`
   return (
