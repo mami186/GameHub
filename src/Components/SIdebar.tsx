@@ -25,7 +25,7 @@ const SIdebar = ( ) => {
 								alt="Image"
 							/>{" "}
 							<button
-								onClick={() => setGenreId}
+								onClick={() => setGenreId(genra.id)}
 								className={`text-sm hover:underline text-left hover:text-purple-800 ${genra.id === genreId? ' font-bold underline':'font-normal'}`}
 							>
 								{genra.name}

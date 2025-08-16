@@ -1,19 +1,12 @@
 import { useState } from "react";
-import GameHeading from "./Components/GameHeading";
-import MainContent from "./Components/MainContent";
-import Navbar from "./Components/Navbar";
-import PlatformSelector from "./Components/PlatformSelector";
-import SIdebar from "./Components/SIdebar";
+import MainContent from "../Components/MainContent";
+import SIdebar from "../Components/SIdebar";
 
 
 const App = () => { 
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 	return (
 		<>
-			<div className="relative">
-				<Navbar
-				/>
-
 				{/* Mobile Sidebar Overlay */}
 				{isMobileMenuOpen && (
 					<div
@@ -46,16 +39,12 @@ const App = () => {
 					</div>
 
 					<div className="flex-1">
-						<div className="flex flex-col">
-							<GameHeading/>
-							<PlatformSelector/>
-						</div>
+
 						<div className="">
 							<MainContent />
 						</div>
 					</div>
 				</div>
-			</div>
 		</>
 	);
 };
