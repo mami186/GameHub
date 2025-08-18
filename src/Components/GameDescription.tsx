@@ -26,7 +26,6 @@ const GameDescription = ({ game, isLoading }: Props) => {
 	return (
 		<>
 			<div className="my-3 mx-10  ">
-				<h1 className="text-6xl px-20 font-bold mb-3 ">{game?.name}</h1>
 				<p className="px-5">
 					{displayText}{" "}
 					<button

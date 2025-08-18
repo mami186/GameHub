@@ -14,7 +14,7 @@ const GameTrailer = ({ id }: Props) => {
 	}
 
 	if (!query.data?.results || query.data.results.length === 0) {
-		return <div>No trailer available</div>;
+		return <div> </div>;
 	}
 
 	const trailer = query.data.results[0];
