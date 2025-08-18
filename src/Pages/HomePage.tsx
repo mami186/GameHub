@@ -39,7 +39,7 @@ const App = () => {
 					</div>
 
 					<div className="flex-1">
-
+						
 						<div className="">
 							<MainContent />
 						</div>

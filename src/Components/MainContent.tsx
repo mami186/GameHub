@@ -60,45 +60,45 @@ const MainContent = () => {
 					</div>
 					{error && <p>{error.message}</p>}
 					<div className="flex flex-auto">
-						<div className="flex flex-wrap justify-evenly px-2 sm:px-0 ">
+						<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4  p-4">
 							{isLoading &&
 								skeletons.map((skeleton) => <LoadingSkeleton key={skeleton} />)}
 							{data?.pages.map((page, index) => (
 								<React.Fragment key={index}>
 									{page.results.map((game) => (
-										<Link to={`/games`}>
-										<div 
-											className={
-												"flex flex-col flex-auto  sm:w-72 sm:max-w-96  rounded-lg overflow-hidden shadow-2xl  m-1 mb-2 "
-											}
-											key={game.id}
-										>
-											{game.background_image ? (
-												<img
-													src={MediaResize(game.background_image)}
-													alt={game.name}
-												/>
-											) : (
-												<div className="w-full h-58 bg-gray-200 flex items-center justify-center">
-													<span className="text-gray-500">No Image</span>
-												</div>
-											)}
-											<div className="flex flex-col">
-												<div className="flex items-center justify-between px-3 py-2 h-auto">
-													<div>{game.name}</div>
-													<div className="bg-gray-500 opacity-70 rounded p-0 text-center">
-														{game.rating}
+										<Link key={game.id} to={`/games/${game.slug}`}>
+											<div
+												className="flex flex-col w-full h-full rounded-lg overflow-hidden shadow-lg hover:shadow-xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 ease-in-out bg-white cursor-pointer"
+												key={game.id}
+											>
+												{game.background_image ? (
+													<img
+														src={MediaResize(game.background_image)}
+														alt={game.name}
+														className="w-full h-56 sm:h-64 md:h- lg:h-56 xl:h-56 2xl:h-56 object-cover flex-shrink-0"
+													/>
+												) : (
+													<div className="w-full h-56 sm:h-64 md:h-56 lg:h-64 xl:h-56 2xl:h-64 bg-gray-200 flex items-center justify-center flex-shrink-0">
+														<span className="text-gray-500">No Image</span>
+													</div>
+												)}
+												<div className="flex flex-col flex-grow p-2">
+													<div className="flex items-center justify-between mb-1">
+														<div className="text-lg font-semibold text-gray-800 line-clamp-2">{game.name}</div>
+														<div className="bg-gray-500 opacity-70 rounded px-2 py-1 text-sm text-white font-medium ml-2 flex-shrink-0">
+															{game.rating}
+														</div>
+													</div>
+													<div className="mt-auto">
+														<PlatformIcons
+															platforms={
+																game.parent_platforms?.map((p) => p.platform) ||
+																[]
+															}
+														/>
 													</div>
 												</div>
-												<div className="px-3 pb-2">
-													<PlatformIcons
-														platforms={game.parent_platforms?.map(
-															(p) => p.platform
-														) || []}
-													/>
-												</div>
 											</div>
-										</div>
 										</Link>
 									))}
 								</React.Fragment>

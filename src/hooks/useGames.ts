@@ -8,6 +8,8 @@ const apiClient = new ApiClient<Game>("/games");
 export interface Game {
 	id: number;
 	name: string;
+	description: string;
+	description_raw: string;
 	slug: string;
 	rating: number;
 	background_image: string;

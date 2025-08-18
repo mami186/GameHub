@@ -7,8 +7,8 @@ interface GameQuery {
 }
 interface Store{
     menueBar:boolean;
+    gameQuery:GameQuery;
     setmenueBar:()=>void;
-	gameQuery:GameQuery;
     setGenreId:(genreId:number)=>void;
     setPlatformId:(platformId:number | undefined)=>void;
     setSearchText:(searchText:string)=>void;
