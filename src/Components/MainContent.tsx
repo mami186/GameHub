@@ -68,7 +68,7 @@ const MainContent = () => {
 									{page.results.map((game) => (
 										<Link key={game.id} to={`/games/${game.slug}`}>
 											<div
-												className="flex flex-col w-full h-full rounded-lg overflow-hidden shadow-lg hover:shadow-xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 ease-in-out bg-white cursor-pointer"
+												className="flex flex-col w-full h-full rounded-lg overflow-hidden shadow-lg hover:shadow-xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 ease-in-out  cursor-pointer"
 												key={game.id}
 											>
 												{game.background_image ? (
@@ -84,8 +84,10 @@ const MainContent = () => {
 												)}
 												<div className="flex flex-col flex-grow p-2">
 													<div className="flex items-center justify-between mb-1">
-														<div className="text-lg font-semibold text-gray-800 line-clamp-2">{game.name}</div>
-														<div className="bg-gray-500 opacity-70 rounded px-2 py-1 text-sm text-white font-medium ml-2 flex-shrink-0">
+														<div className="text-lg font-semibold line-clamp-2">
+															{game.name}
+														</div>
+														<div className=" opacity-70 rounded px-2 py-1 text-sm text-white font-medium ml-2 flex-shrink-0">
 															{game.rating}
 														</div>
 													</div>

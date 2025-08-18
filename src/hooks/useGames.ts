@@ -11,6 +11,8 @@ export interface Game {
 	description: string;
 	description_raw: string;
 	slug: string;
+	publishers:{ id: number; name: string }[]
+	genres: { id: number; name: string }[];
 	rating: number;
 	background_image: string;
 	parent_platforms: { platform: Platform }[];
