@@ -17,7 +17,7 @@ const GameDescription = ({ game, isLoading }: Props) => {
 	};
 	if (isLoading)
 		return (
-			<div className="rounded my-3 mx-10 animate-pulse ">
+			<div className="rounded my-5 animate-pulse ">
 				<div className="px-20 rounded font-bold bg-gray-500 h-9 w-9 my-6 mx-19" />
 				<div className="px-5 rounded bg-gray-500 h-19 w-full" />
 				<button className="rounded bg-gray-500 text-white px-9 py-3 ml-9" />
@@ -25,12 +25,11 @@ const GameDescription = ({ game, isLoading }: Props) => {
 		);
 	return (
 		<>
-			<div className="my-3 mx-10  ">
-				<p className="px-5">
+			<div className="my-5   ">
+				<p className="">
 					{displayText}{" "}
 					<button
-						className="rounded bg-gray-700 hover:bg-gray-800 text-white p-1 ml-2"
-						hidden={!isLong}
+						className="rounded bg-gray-500 hover:bg-gray-700 text-white  ml-2"
 						onClick={toggleText}
 					>
 						{showFull ? "Show Less" : "Show More"}

@@ -28,9 +28,7 @@ const Navbar = () => {
 					<li className="flex flex-grow gap-3 pl-3 sm:mx-10 pr-10 ">
 						<div className="relative w-full flex items-center">
 							<IoSearchSharp
-								className={`absolute left-3 z-10 text-gray-500 transition-opacity duration-200 ${
-									hasText ? "opacity-0" : "opacity-100"
-								}`}
+								className={`absolute left-3 z-10 text-gray-500 transition-opacity duration-200`}
 							/>
 							<form
 								className="w-full"
@@ -43,7 +41,7 @@ const Navbar = () => {
 									ref={ref}
 									type="text"
 									placeholder="Search games..."
-									className="w-full h-10 border border-gray-300 rounded-xl hover:bg-gray-100 px-10 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+									className="w-full h-10 border border-gray-300 rounded-2xl px-10 py-2 focus:outline-none focus:ring-2 focus:ring-gray-400"
 									onChange={(e) => setHasText(e.target.value.length > 0)}
 								/>
 							</form>

@@ -10,24 +10,22 @@ const GameDetail = () => {
 	const { data: game, isLoading } = useGameDetail(slug!);
 
 	return (
-		<div className="px-30">
-			<div className="text-6xl font-bold">{game?.name}</div>
+		<>
+			<div className="px-40 text-6xl font-bold mt-9">{game?.name}</div>
+		<div className="px-30 max-w-7xl mx-auto mt-9">
 			<div className="flex flex-col flex-wrap">
-					{game?.id && <GameScreenshots id={game.id}></GameScreenshots>}
-				<div  className='flex flex-row flex-wrap w-[480px]'>
+				{game?.id && <GameScreenshots id={game.id}></GameScreenshots>}
+				<div className="w-full">
 					{game?.id && <GameTrailer id={game.id}></GameTrailer>}
 				</div>
 			</div>
 
-			<div className='w-full'>
+			<div className="w-full">
 				<GameDescription isLoading={isLoading} game={game} />
-
 			</div>
-				<GameAttributes game={game} />
-
-			
+			<GameAttributes game={game} />
 		</div>
-	);
+</>	);
 };
 
 export default GameDetail;

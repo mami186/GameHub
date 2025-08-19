@@ -28,22 +28,23 @@ const GameScreenshots = ({ id }: Props) => {
 	const maxPic = screenshot.length - 1;
 
 	return (
-		<>
-			<div className="relative mx-20 aspect-auto w-4xl group">
-				<div className="w-full h-96 rounded-2xl overflow-hidden">
+		<div className="w-full">
+			<div className="relative w-full group">
+				<div className="w-full aspect-video rounded-2xl overflow-hidden">
 					<div 
 						className="flex transition-transform duration-500 ease-in-out h-full"
 						style={{ 
 							transform: `translateX(-${num * 100}%)`,
 						}}
-					>
+					>    
 						{screenshot.map((image, index) => (
-							<img
-								key={image.id || index}
-								className="w-full h-full object-cover flex-shrink-0"
-								src={image.image}
-								alt={`Screenshot ${index + 1}`}
-							/>
+							<div key={image.id || index} className="w-full h-full flex-shrink-0">
+								<img
+									className="w-full h-full object-contain"
+									src={image.image}
+									alt={`Screenshot ${index + 1}`}
+								/>
+							</div>
 						))}
 					</div>
 				</div>
@@ -70,42 +71,46 @@ const GameScreenshots = ({ id }: Props) => {
 				</div>
 			</div>
 
-			<div className="flex w-full justify-between py-2 bg-gray-500 rounded-4xl">
-				<div className="flex align-middle items-center">
-					{num > 0 && (
+			<div className="w-full flex items-center py-2  opacity-50 rounded-2xl mt-2">
+				<div className="flex items-center">
+					
 						<button
-							className="text-4xl mr-10 rounded-4xl h-auto py-0 bg-blue-600 hover:bg-blue-700 transition-colors"
+							className="text-4xl mx-4 rounded-full h-auto py-2 px-2 bg-gray-500 transition-colors"
 							onClick={() => handleImageChange(num - 1)}
+							disabled={num === 0}
 						>
 							<MdOutlineKeyboardArrowLeft />
 						</button>
-					)}
+					
 				</div>
-				<div className="grid grid-cols-6 justify-center overflow-hidden">
-					{screenshot.map((screenshot, index) => (
-						<img 
-							key={screenshot.id || index}
-							className={`px-1 rounded-2xl cursor-pointer hover:scale-105 transition-transform ${
-								index === num ? 'ring-2 ring-blue-500' : ''
-							}`}
-							src={screenshot.image} 
-							alt={`Thumbnail ${index + 1}`}
-							onClick={() => handleImageChange(index)}
-						/>
-					))}
+				<div className="flex-1  ">
+					<div className="flex justify-around px-2">
+						{screenshot.map((screenshot, index) => (
+							<img 
+								key={screenshot.id || index}
+								className={`h-16 w-24 object-cover rounded-lg cursor-pointer hover:scale-105 transition-transform flex-shrink-0 ${
+									index === num ? 'ring-2 ring-gray-300' : ''
+								}`}
+								src={screenshot.image} 
+								alt={`Thumbnail ${index + 1}`}
+								onClick={() => handleImageChange(index)}
+							/>
+						))}
+					</div>
 				</div>
-				<div className="flex align-middle items-center">
-					{num < maxPic && (
+				<div className="flex items-center">
+					
 						<button
-							className="text-4xl ml-10 rounded-4xl bg-red-600 hover:bg-red-700 transition-colors"
+							className="text-4xl mx-4 rounded-full bg-gray-500 py-2 px-2 transition-colors"
 							onClick={() => handleImageChange(num + 1)}
+							disabled={num === maxPic}
 						>
 							<MdOutlineKeyboardArrowRight />
 						</button>
-					)}
+					
 				</div>
 			</div>
-		</>
+		</div>
 	);
 };
 
