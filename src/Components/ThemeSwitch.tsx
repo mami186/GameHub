@@ -23,7 +23,7 @@ const ThemeSwitch = () => {
 	}, [isDark]);
 
 	return (
-		<div className="flex items-center space-x-4 ">
+		<div className="flex items-center space-x-4 transform transition-transform duration-300 hover:scale-110 ">
 			<button
 				onClick={toggleTheme}
 				className={`relative w-16 h-8 rounded-full border  p-1 flex items-center transition-colors duration-300 ${
