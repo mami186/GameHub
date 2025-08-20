@@ -3,7 +3,7 @@ import { FaHashnode } from "react-icons/fa6";
 import { IoSearchSharp, IoMenu } from "react-icons/io5";
 import ThemeSwitch from "./ThemeSwitch";
 import useStore from "../store";
-import { Link, useNavigate, useNavigation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
 	const navigate = useNavigate();
